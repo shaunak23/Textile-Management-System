@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Design by foolishdeveloper.com -->
+    <title>Yarn Storage </title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--Stylesheet-->
+    <style>
+        .gradient-custom {
+        /* fallback for old browsers */
+        background: #000046;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #f7b76d, #f5d3a0);  /* Chrome 10-25, Safari 5.1-6 */
+        /* background: linear-gradient(to right, #f7b76d, #f5d3a0); */
+        background-color: #ffffff;
+background-image: linear-gradient(315deg, #ffffff 0%, #06080a 74%);
+
+    }
+    /* .btn{
+        margin-top: 0rem;
+        margin-left: 2rem;
+        margin-bottom: 2rem;
+    } */
+    .submit-btn{
+        padding-left: 0px;
+    }
+    
+    .card-registration .select-input.form-control[readonly]:not([disabled]) {
+        font-size: 1rem;
+        line-height: 2.15;
+        padding-left: .75em;
+        padding-right: .75em;
+        }
+        .card-registration .select-arrow {
+        top: 13px;
+        }
+        .form-label {
+            font-weight: bold;
+            font-size: 18px; 
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .card-main{
+            box-shadow: 10px 10px 5px rgb(54, 53, 53) ;
+
+        }
+        
+        
+      </style>
+
+
+    <!-- /* Yarn received - yes/no. check box
+No. of Cones -
+Size of cone - 
+no. of doffs -
+final weight of cones -
+Waste collection weight -
+Package defects if any -
+Button to report to supervisor  but */ -->
+
+
+    </style>
+</head>
+<!-- Yarn requirement
+Warp Count
+Weft Count
+Reed
+Picks
+Warping Length required for manufacturing the grey fabric -->
+
+<body>
+    <section class="mh-100 gradient-custom">
+
+        <div class="container py-5 h-100">
+            
+
+
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                    <div class="card  card-main" style="border-radius: 15px;">
+                        <div class="card-body p-4 p-md-5">
+                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5" style="text-align: center;">Winding</h3>
+                            
+                            
+
+                            
+                            <form action="submitwindingdata/" method="post">
+                                {%csrf_token%}
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label class="form-label" for="currentOrderNo">Select Order No:</label>
+                                        <select  name="currentOrderNo" class="select form-control">                                          
+                                            {% for x in data%}
+                                            <option value="{{x.orderNo}}">{{x.orderNo}}</option>
+                                            {% endfor %}
+                                          </select>
+                                    
+                                    </div>
+                    
+                                  
+                                
+
+                                    <div class="col-md-6 mb-4">
+
+                                        <h6 class="mb-2 pb-1 form-label">Yarn Received: </h6>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="received" id="Yes"
+                                                value="1" checked />
+                                            <label class="form-check-label" for="Yes">Yes</label>
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="received" id="No"
+                                                value="0" />
+                                            <label class="form-check-label" for="No">No</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                               
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="weight">No. of Cones:</label>
+                                            <input type="number" id="conesnumber" name="conesnumber"
+                                                class="form-control form-control-lg" />
+
+                                        </div>
+                                    </div>
+                              
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="weight">Size of cone:</label>
+                                            <input type="number" id="conesize" name="conesize"
+                                                class="form-control form-control-lg" />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="weight">No. of doffs:</label>
+                                            <input type="number" id="doffsnumber" name="doffsnumber"
+                                                class="form-control form-control-lg" />
+
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="weight">Waste collection weight:</label>
+                                            <input type="number" id="waste" name="waste"
+                                                class="form-control form-control-lg" />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="weight">Final weight of cones:</label>
+                                            <input type="number" id="weightfinal" name="weightfinal"
+                                                class="form-control form-control-lg" />
+
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="weight">Package defects (if any):</label>
+                                            <input type="text" id="defects" name="defects"
+                                                class="form-control form-control-lg" />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                        
+                        <div class="col-md-6 mb-4 submit-btn">
+      
+                            <div class="mt-4 pt-2">
+                              <input class="btn btn-primary btn-lg " type="submit" value="Submit"  />
+                            </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</body>
+
+</html>

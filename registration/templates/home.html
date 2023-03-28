@@ -1,23 +1,166 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
+  <script
+    type="text/javascript"
+    src="https://www.gstatic.com/charts/loader.js"></script>
+
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta charset="utf-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous" />
 
     <title>Home Page</title>
   </head>
+
+  <style></style>
+
   <body>
-    <h1>Home Page</h1>
-    <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+    <h1 style="text-align: center">Analysis of Looms</h1>
+
+    <table border="2px" class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Date</th>
+
+          <th scope="col">Loom No</th>
+
+          <th scope="col">Order No</th>
+
+          <th scope="col">Total Meter</th>
+
+          <th scope="col">Target</th>
+
+          <th scope="col">Rs Generated</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for my_dict in my_list %}
+
+        <tr>
+          <td>{{ my_dict.date }}</td>
+
+          <td>{{ my_dict.loom_no }}</td>
+
+          <td>{{ my_dict.order_no }}</td>
+
+          <td>{{ my_dict.total_meter }}</td>
+
+          <td>{{ my_dict.target }}</td>
+
+          <td>{{ my_dict.rs_generated }}</td>
+        </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <br />
+    <h5 style="text-align: center">Total meter produced by each loom</h5>
+    <br />
+
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+      ">
+      <div
+        class=""
+        style="
+          width: 325px;
+          height: 325px;
+          align-self: center;
+          margin-left: 10rem;
+        ">
+        <canvas id="myChart" align="center"></canvas>
+      </div>
+      <table
+        border="2px"
+        align="center"
+        style="align-self: center; align-items: center">
+        <thead class="thead-dark">
+          <tr>
+            <th>Loom No</th>
+
+            <th>Total Meter</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for my_dict in pi_data %}
+
+          <tr>
+            <td scope="col">{{ my_dict.loom_no }}</td>
+
+            <td scope="col">{{ my_dict.total_meter }}</td>
+          </tr>
+
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      var ctx = document.getElementById('myChart').getContext('2d');
+      ctx.width = 1000;
+      ctx.height = 1000;
+      var label = {{ chart_data.0 }}
+      var data1 = {{ chart_data.1 }}
+      var strArr = label.map(function (e) { return 'Loom no.: ' + e.toString() });
+      label = strArr
+      var l = ['']
+      console.log(data1)
+      console.log(label)
+      var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: label,
+          datasets: [{
+            label: 'Total meter produced by each loom',
+            data: data1,
+            backgroundColor: ['#9ADCFF', '#FD8A8A', '#90C8AC']
+
+
+          }]
+        },
+
+      });
+    </script>
 
     <!-- Optional JavaScript -->
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
   </body>
 </html>

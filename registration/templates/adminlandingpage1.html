@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard Page</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+    
+   <style>
+    body{
+  background-image: linear-gradient(to right, #fffbd5, #b2660ae5);
+} 
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color:  #333;
+}
+.main{
+  background-image: url("https://www.mygov.in/sites/all/themes/mygov/images/handloom-day/major-6.jpg");
+  
+}
+.header{
+  text-align: center;
+  padding: 30px;
+  /* color:#F0FF42; */
+  color: white;
+  font-size:60px;
+  text-shadow: 4px 4px 8px #000000;
+  
+
+}
+.main-content{
+  text-align: center;
+  padding: 100px;
+  font-size: 35px;
+  font-family: 'Times New Roman', Times, serif;
+  text-shadow: 2px 2px 5px rgba(131, 240, 220, 0.868);
+}
+
+   </style>
+
+    
+    <body>
+      <div class="main">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="sticky-top collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="{% url 'home' %}">Analysis</a>
+                <a class="nav-item nav-link" href="{% url 'addorderpage' %}">Add order</a>
+                <a class="nav-item nav-link" href="{% url 'dashboardpage' %}">View Orders</a>
+                <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+              </div>
+            </div>
+        </nav>
+        <h1  class="header">Welcome to Textile Mangement System</h1>   
+      </div>
+      <div>
+        <h4 class="main-content">"Revering the beautiful Craftmanship that goes<br> into every single thread"</h4>
+      </div>
+    </body>
+
+</html>

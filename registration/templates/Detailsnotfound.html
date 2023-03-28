@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: rgb(0, 0, 0);
+            background: linear-gradient(135deg, rgb(0, 0, 0) 35%, rgb(0, 0, 0) 100%);
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+        }
+
+        .error-image {
+            max-width: 720px;
+            width: 90%;
+            margin: auto;
+            text-align: center;
+        }
+
+            .error-image h1 {
+                font-size: 120px;
+                margin: 48px auto 20px;
+            }
+
+        .error-msg-container {
+            margin: 18px auto 30px auto;
+            max-width: 800px;
+            width: 80%;
+            text-align: center;
+        }
+
+            .error-msg-container h1 {
+                font-size: 56px;
+                max-width: 560px;
+                margin: auto auto 48px;
+            }
+
+            .error-msg-container a {
+                background-color: white;
+                padding: 7px;
+                border-radius: 7px;
+                text-decoration: none;
+                color: black;
+            }
+    </style>
+    <title>detailsnotfound</title>
+</head>
+
+<body>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <div class="error-image">
+        <h1>☹️</h1>
+    </div>
+
+    <div class="error-msg-container">
+        <h1>Details Not Found</h1>
+        <h2>Looks like you're lost</h2>
+        <h4>The Owner of the Process have not Entered the Data!</h4>
+        <a href="{% url 'adminlandingpage' %}" type="submit">Go to Home</a>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,260 @@
+<!doctype html>
+
+<html lang="en">
+
+ <head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- <link rel="stylesheet" href="styles\yarn_storage.css"> -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <title>Home Page</title>
+
+ </head>
+
+ <style>
+
+  .gradient-custom {
+
+  /* fallback for old browsers */
+
+  background: #000046; /* fallback for old browsers */
+
+  background: -webkit-linear-gradient(to right, #1CB5E0, #000046); /* Chrome 10-25, Safari 5.1-6 */
+
+  background-image: linear-gradient(315deg, #ffffff 0%, #06080a 74%);
+
+}
+
+/* .btn{
+
+  margin-top: 0rem;
+
+  margin-left: 2rem;
+
+  margin-bottom: 2rem;
+
+} */
+
+.submit-btn{
+
+  padding-left: 0px;
+
+}
+
+
+
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+
+  font-size: 1rem;
+
+  line-height: 2.15;
+
+  padding-left: .75em;
+
+  padding-right: .75em;
+
+  }
+
+  .card-registration .select-arrow {
+
+  top: 13px;
+
+  }
+
+  .form-label {
+
+      font-weight: bold;
+
+      font-size: 18px;
+
+      font-family: 'Times New Roman', Times, serif;
+
+    }
+
+    .card-main{
+
+      box-shadow: 10px 10px 5px rgb(54, 53, 53) ;
+
+
+
+
+    }
+
+ </style>
+
+ <body>
+
+  <section class="vh-100 gradient-custom">
+
+ 
+
+    <div class="container py-5 h-100">
+
+     
+
+      
+
+      
+
+
+
+
+     <div class="row justify-content-center align-items-center h-100">
+
+      <div class="col-12 col-lg-9 col-xl-7">
+
+       <div class="card card-main" style="border-radius: 15px;">
+
+        <div class="card-body p-4 p-md-5">
+
+         <h3 class="mb-4 pb-2 pb-md-0 mb-md-5" style="text-align: center;">Yarn Storage</h3>
+
+         <form action="submityarndata/" method="post">
+
+          {%csrf_token%}
+
+          <div class="row">
+
+            <div class="col-md-6 mb-4">
+
+             <label class="form-label" for="currentOrderNo">Select Order No:</label>
+
+              <select name="currentOrderNo" class="select form-control">
+
+                {% for x in data%}
+
+                <option value="{{x.orderNo}}">{{x.orderNo}}</option>
+
+                {% endfor %}
+
+              </select>
+
+           
+
+            </div>
+
+   
+
+           </div>
+
+  
+
+         
+
+  
+
+          <div class="row">
+
+        
+
+           <div class="col-md-6 mb-4">
+
+  
+
+            <h6 class="mb-2 pb-1 form-label">Yarn Received: </h6>
+
+  
+
+            <div class="form-check form-check-inline">
+
+             <input class="form-check-input" type="radio" name="isYarnReceived" id="isYarnReceived"
+
+              value="1" checked />
+
+             <label class="form-check-label" for="Yes">Yes</label>
+
+            </div>
+
+  
+
+            <div class="form-check form-check-inline">
+
+             <input class="form-check-input" type="radio" name="isYarnReceived" id="isYarnReceived"
+
+              value="0" />
+
+             <label class="form-check-label" for="No">No</label>
+
+            </div>
+
+           </div>
+
+          </div>
+
+  
+
+          <div class="row">
+
+            <div class="col-md-6 mb-4">
+
+  
+
+            <div class="form-outline">
+
+              <label class="form-label" for="weight">Weight of Yarn:</label>
+
+             <input type="text" id="weight" name="weight" class="form-control form-control-lg" />
+
+            
+
+            </div>
+
+            </div>
+
+  
+
+           </div>
+
+          
+
+         
+
+          <div class="col-md-6 mb-4 submit-btn">
+
+  
+
+          <div class="mt-4 pt-2">
+
+           <input class="btn btn-primary btn-lg " type="submit" value="Submit" />
+
+          </div>
+
+          </div>
+
+          </div>   
+
+         </form>
+
+        </div>
+
+       </div>
+
+      </div>
+
+     </div>
+
+   
+
+  </section>
+
+  
+
+  <!-- Optional JavaScript -->
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+ </body>
+
+</html>

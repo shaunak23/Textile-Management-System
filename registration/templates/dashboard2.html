@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard Page</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    .container {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+ background: #000046;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f7b76d, #f5d3a0);  /* Chrome 10-25, Safari 5.1-6 */
+    background-image: linear-gradient(315deg, #ffffff 0%, #06080a 74%);
+}.button {
+ width: 200px;
+ height: 200px;
+ /* background-color: blue; */
+ margin: 10px;
+ font-size: 30px;
+ border-radius: 6px;
+ color: black;
+ font-family: 'Times New Roman', Times, serif;
+ cursor: pointer;
+ border: none;
+ box-shadow: 10px 10px 5px rgb(54, 53, 53) ;
+
+ 
+ 
+   transition: all 0.3s ease;
+}.button:hover {
+ opacity: 0.8;
+ transform: translateY(-5px);
+}#yarn {
+background-color: #ecf0f1;
+margin-top: 4%;
+}#winding {
+ background-color: #ecf0f1;
+ margin-top: 4%;
+
+}#warping {
+ background-color: #ecf0f1;
+ margin-top: 4%;
+
+}#looming {
+ background-color: #ecf0f1;
+ margin-top: 4%;
+
+}#weaving {
+ background-color: #ecf0f1;
+ margin-top: 4%;
+
+}#checking {
+ background-color: #ecf0f1;
+ margin-top: 4%;
+}#repairing {
+ background-color: #ecf0f1;
+ margin-top: 4%;
+}#packing {
+ background-color: #ecf0f1;
+ margin-top: 4%;
+}
+#dispatch {
+ background-color: #ecf0f1;
+ margin-top: 4%;
+}
+
+ 
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color:white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color:  #333;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  color: black;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+</style>
+<body>
+  <form action="getdashboarddata/" method="post">
+    {%csrf_token%}
+    <div class="navbar">
+      <div class="dropdown">
+        <select class="dropbtn" name="currentOrderNo" class="select form-control">
+          <option value="none" selected disabled hidden>Select an Option</option>
+          {% for x in data%}
+          <option value="{{x.orderNo}}">Order Id {{x.orderNo}}</option>
+          {% endfor %}
+        </select>
+        <button type="submit" value="submit">Submit</button>
+      </div> 
+    </div>
+    </form> 
+    
+  <div class="container">
+    {% if getJobData.isYarningDone == False %}
+    <a href="{% url 'detailsnotfound' %}"><button class="button" id="error">Yarn Not Completed</button></a>
+    {% else %}
+    <button class="button" id="yarn">Yarning Completed</button>
+    {% endif %}
+    {% if getJobData.isWindingDone == False %}
+    <a href="{% url 'detailsnotfound' %}"><button class="button" id="error">Winding Not Completed</button></a>
+    {% else %}
+    <button class="button" id="winding">Winding Completed</button>
+    {% endif %}
+    {% if getJobData.isWarpingDone == False %}
+    <a href="{% url 'detailsnotfound' %}"><button class="button" id="error">Warping Not Completed</button></a>
+    {% else %}
+    <button class="button" id="warping">Warping Completed</button>
+    {% endif %}
+    {% if getJobData.isLoomingDone == False %}
+    <a href="{% url 'detailsnotfound' %}"><button class="button" id="error">Looming Not Completed</button></a>
+    {% else %}
+    <button class="button" id="looming">Looming Completed</button>
+    {% endif %}
+    {% if getJobData.isCheckingDone == False %}
+    <a href="{% url 'detailsnotfound' %}"><button class="button" id="error">Checking Not Completed</button></a>
+    {% else %}
+    <button class="button" id="checking">Checking Completed</button>
+    {% endif %}
+    {% if getJobData.isRepairingDone == False %}
+    <a href="{% url 'detailsnotfound' %}"><button class="button" id="error">Reparing Not Completed</button></a>
+    {% else %}
+    <button class="button" id="repairing">Repairing Completed</button>
+    {% endif %}
+    <button class="button" id="packing">Packing</button>
+    <button class="button" id="dispatch">Dispatch</button>
+  </div>
+  <script type="text/javascript">
+
+    document.getElementById("yarn").onclick = function () {
+
+        location.href = "http://127.0.0.1:8000/showyarndata/";
+
+    };
+    document.getElementById("winding").onclick = function () {
+
+    location.href = "http://127.0.0.1:8000/showwindingdata/";
+
+    };
+    document.getElementById("warping").onclick = function () {
+
+    location.href = "http://127.0.0.1:8000/showwarpingdata/";
+
+    };
+    document.getElementById("looming").onclick = function () {
+
+    location.href = "http://127.0.0.1:8000/showloomingdata/";
+
+    };
+    document.getElementById("checking").onclick = function () {
+
+    location.href = "http://127.0.0.1:8000/showcheckingdata/";
+
+    };
+    document.getElementById("repairing").onclick = function () {
+
+    location.href = "http://127.0.0.1:8000/showrepairingdata/";
+
+    };
+  
+
+
+  </script>
+ 
+</body>
+</html>
