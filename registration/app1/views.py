@@ -2,6 +2,7 @@ from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from .models import UserMapping
 # Create your views here.
 @login_required(login_url='login')
 def HomePage(request):
@@ -33,8 +34,15 @@ def LoginPage(request):
         pass1=request.POST.get('pass')
         user=authenticate(request,username=username,password=pass1)
         if user is not None:
+            print(user)
             login(request,user)
-            return redirect('home')
+            Role = UserMapping.objects.get(userName=user)
+            print(Role.userRole)
+            currRole = Role.userRole
+            if(currRole == 2):
+                return redirect('home')
+            elif(currRole == 1):
+                return HttpResponse("User Role 1")
         else:
             return HttpResponse ("Username or Password is incorrect!!!")
 
